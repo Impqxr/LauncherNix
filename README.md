@@ -1,3 +1,9 @@
+### In order to install it through Nix, follow [these instructions](https://github.com/Impqxr/LauncherNix/blob/develop/nix/README.md)
+
+Original README:
+
+---
+
 <p align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="/program_info/ru.pineconemc.launcher.logo-darkmode.svg">
