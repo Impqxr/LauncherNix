@@ -67,8 +67,7 @@ QStringList JavaPerformance::getGarbageCollectorArgs(const JavaVersion& version,
             return {};
         case GarbageCollectorPreset::G1GC: {
             // Mojang defaults
-            QStringList args{ "-XX:+UnlockExperimentalVMOptions", "-XX:+UseG1GC",
-                              "-XX:G1NewSizePercent=20", "-XX:G1ReservePercent=20",
+            QStringList args{ "-XX:+UnlockExperimentalVMOptions", "-XX:+UseG1GC", "-XX:G1NewSizePercent=20", "-XX:G1ReservePercent=20",
                               "-XX:MaxGCPauseMillis=50", "-XX:G1HeapRegionSize=32M",
                               // Aikar's flags
                               "-XX:SurvivorRatio=32", "-XX:MaxTenuringThreshold=1" };

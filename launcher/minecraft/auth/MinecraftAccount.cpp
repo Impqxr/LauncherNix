@@ -206,7 +206,8 @@ QString MinecraftAccount::displayName() const
         return QString();
     };
     const QString nameWithType = QString("%1 [%2]").arg(profileName(), typeFriendlyString(data.type));
-    if (const QList validStates{ AccountState::Unchecked, AccountState::Working, AccountState::Offline, AccountState::Online }; !validStates.contains(accountState())) {
+    if (const QList validStates{ AccountState::Unchecked, AccountState::Working, AccountState::Offline, AccountState::Online };
+        !validStates.contains(accountState())) {
         return QString("⚠ %1").arg(nameWithType);
     }
     return nameWithType;
@@ -270,16 +271,16 @@ void MinecraftAccount::fillSession(AuthSessionPtr session, int elyPatchPreferenc
         session->session = "-";
     }
     switch (elyPatchPreference) {
-        case 0: { // Always
+        case 0: {  // Always
             session->wantsElyPatch = true;
         } break;
-        case 1: { // When using Ely and Offline accounts
+        case 1: {  // When using Ely and Offline accounts
             session->wantsElyPatch = data.type == AccountType::Ely || data.type == AccountType::Offline;
         } break;
-        case 2: { // When using Ely accounts
+        case 2: {  // When using Ely accounts
             session->wantsElyPatch = data.type == AccountType::Ely;
         } break;
-        default: { // Never/unknown
+        default: {  // Never/unknown
             session->wantsElyPatch = false;
         }
     }

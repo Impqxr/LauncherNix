@@ -409,7 +409,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     // load the news
     {
-        //m_newsChecker->reloadNews();
+        // m_newsChecker->reloadNews();
         updateNewsLabel();
     }
 
@@ -657,7 +657,7 @@ void MainWindow::repopulateAccountsMenu()
 
     auto accounts = APPLICATION->accounts();
     MinecraftAccountPtr defaultAccount = accounts->defaultAccount();
-    
+
     bool canChangeSkin = defaultAccount && (defaultAccount->accountType() == AccountType::MSA) && !defaultAccount->isActive();
     ui->actionManageSkins->setEnabled(canChangeSkin);
 

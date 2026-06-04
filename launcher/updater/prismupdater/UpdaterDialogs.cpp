@@ -73,7 +73,7 @@ void SelectReleaseDialog::loadReleases()
     }
 }
 
-void SelectReleaseDialog::appendRelease(GitHubRelease const& release)
+void SelectReleaseDialog::appendRelease(const GitHubRelease& release)
 {
     auto rls_item = new QTreeWidgetItem(ui->versionsTree);
     rls_item->setText(0, release.tag_name);
@@ -144,7 +144,7 @@ void SelectReleaseAssetDialog::loadAssets()
     }
 }
 
-void SelectReleaseAssetDialog::appendAsset(GitHubReleaseAsset const& asset)
+void SelectReleaseAssetDialog::appendAsset(const GitHubReleaseAsset& asset)
 {
     auto rls_item = new QTreeWidgetItem(ui->versionsTree);
     rls_item->setText(0, asset.name);

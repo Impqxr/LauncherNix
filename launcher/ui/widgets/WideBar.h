@@ -51,7 +51,7 @@ class WideBar : public QToolBar {
 
     /** Used to distinguish between versions of the WideBar with different actions */
     QByteArray getHash() const;
-    bool checkHash(QByteArray const&) const;
+    bool checkHash(const QByteArray&) const;
 
    private:
     QList<BarEntry> m_entries;

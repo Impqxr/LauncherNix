@@ -40,8 +40,8 @@
 #include "FlameResourcePages.h"
 #include <QList>
 #include <memory>
-#include "modplatform/flame/FlameAPI.h"
 #include "../ui_ResourcePage.h"
+#include "modplatform/flame/FlameAPI.h"
 
 #include "FlameResourceModels.h"
 #include "ui/dialogs/ResourceDownloadDialog.h"

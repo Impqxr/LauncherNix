@@ -39,8 +39,8 @@
 
 #include <QDir>
 #include <QFile>
-#include <QIcon>
 #include <QIODevice>
+#include <QIcon>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -84,7 +84,8 @@ MinecraftAccountPtr AccountList::getAccountByProfileName(const QString& profileN
     for (int i = 0; i < count(); i++) {
         MinecraftAccountPtr account = at(i);
         if (account->profileName() == profileName) {
-            if (toReturn) return nullptr;
+            if (toReturn)
+                return nullptr;
             toReturn = account;
         }
     }
@@ -661,8 +662,7 @@ void AccountList::tryNext()
                     connect(m_currentTask.get(), &Task::succeeded, this, &AccountList::authSucceeded);
                     connect(m_currentTask.get(), &Task::failed, this, &AccountList::authFailed);
                     m_currentTask->start();
-                    qDebug() << "RefreshSchedule: Processing account" << account->profileName() << "with internal ID"
-                             << accountId;
+                    qDebug() << "RefreshSchedule: Processing account" << account->profileName() << "with internal ID" << accountId;
                     return;
                 }
             }

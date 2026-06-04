@@ -127,7 +127,7 @@ class MinecraftAccount : public QObject, public Usable {
                 return "msa";
             } break;
             case AccountType::Ely: {
-                return "msa"; // required for chat signing
+                return "msa";  // required for chat signing
             } break;
             case AccountType::Offline: {
                 return "offline";

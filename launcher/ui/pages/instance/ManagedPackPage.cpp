@@ -128,7 +128,8 @@ ManagedPackPage::ManagedPackPage(BaseInstance* inst, InstanceWindow* instance_wi
         QDesktopServices::openUrl(url);
     });
 
-    connect(ui->urlLine, &QLineEdit::textChanged, this, [this](QString text) { m_inst->settings()->set("ManagedPackURL", text.trimmed()); });
+    connect(ui->urlLine, &QLineEdit::textChanged, this,
+            [this](QString text) { m_inst->settings()->set("ManagedPackURL", text.trimmed()); });
 }
 
 ManagedPackPage::~ManagedPackPage()

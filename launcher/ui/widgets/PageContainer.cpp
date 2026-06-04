@@ -77,9 +77,7 @@ class PageEntryFilterModel : public QSortFilterProxyModel {
 };
 
 PageContainer::PageContainer(BasePageProvider* pageProvider, QString defaultId, QWidget* parent)
-    : QWidget(parent)
-    , m_proxyModel(new PageEntryFilterModel(this))
-    , m_model(new PageModel(this))
+    : QWidget(parent), m_proxyModel(new PageEntryFilterModel(this)), m_model(new PageModel(this))
 {
     createUI();
     useSidebarStyle(true);

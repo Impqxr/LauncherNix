@@ -23,13 +23,12 @@
 #include "JavaVersion.h"
 
 namespace JavaPerformance {
-    enum class GarbageCollectorPreset : std::uint8_t {
-        None,
-        G1GC,
-        ZGC
-    };
+enum class GarbageCollectorPreset : std::uint8_t { None, G1GC, ZGC };
 
-    QStringList getBaseOptimizationArgs(const JavaVersion& version, GarbageCollectorPreset preset);
-    QStringList getGarbageCollectorArgs(const JavaVersion& version, GarbageCollectorPreset preset);
-    QStringList getCompletePerformanceArgs(const JavaVersion& version, bool useOptimized, GarbageCollectorPreset preset, QString* warning = nullptr);
-}
+QStringList getBaseOptimizationArgs(const JavaVersion& version, GarbageCollectorPreset preset);
+QStringList getGarbageCollectorArgs(const JavaVersion& version, GarbageCollectorPreset preset);
+QStringList getCompletePerformanceArgs(const JavaVersion& version,
+                                       bool useOptimized,
+                                       GarbageCollectorPreset preset,
+                                       QString* warning = nullptr);
+}  // namespace JavaPerformance
