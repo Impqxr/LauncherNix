@@ -1,10 +1,10 @@
 {
-  description = "A custom launcher for Minecraft that allows you to easily manage multiple installations of Minecraft at once (Fork of MultiMC)";
+  description = "This fork of Prism Launcher adds integrated support for Ely.by accounts.";
 
   nixConfig = {
-    extra-substituters = [ "https://prismlauncher.cachix.org" ];
+    extra-substituters = [ "https://pineconemc-unofficial.cachix.org" ];
     extra-trusted-public-keys = [
-      "prismlauncher.cachix.org-1:9/n/FGyABA2jLUVfY+DEp4hKds/rwO+SCOtbOkDzd+c="
+      "pineconemc-unofficial.cachix.org-1:aFVxmb1DKgTEdeaCUATWQXz73nm6oPI2r+Vd+wfgR/0="
     ];
   };
 
@@ -110,7 +110,7 @@
           '';
 
           # Re-use our package wrapper to wrap our development environment
-          qt-wrapper-env = packages'.prismlauncher.overrideAttrs (old: {
+          qt-wrapper-env = packages'.pineconemc.overrideAttrs (old: {
             name = "qt-wrapper-env";
 
             # Required to use script-based makeWrapper below
@@ -136,7 +136,7 @@
           default = mkShell {
             name = "prism-launcher";
 
-            inputsFrom = [ packages'.prismlauncher-unwrapped ];
+            inputsFrom = [ packages'.pineconemc-unwrapped ];
 
             packages = [
               pkgs.ccache
@@ -162,7 +162,7 @@
             ];
 
             cmakeBuildType = "Debug";
-            cmakeFlags = [ "-GNinja" ] ++ packages'.prismlauncher-unwrapped.cmakeFlags;
+            cmakeFlags = [ "-GNinja" ] ++ packages'.pineconemc-unwrapped.cmakeFlags;
             dontFixCmake = true;
 
             shellHook = ''
@@ -193,7 +193,7 @@
         in
 
         {
-          prismlauncher-unwrapped = prev.callPackage ./nix/unwrapped.nix {
+          pineconemc-unwrapped = prev.callPackage ./nix/unwrapped.nix {
             inherit (llvm) stdenv;
             inherit
               libnbtplusplus
@@ -201,7 +201,7 @@
               ;
           };
 
-          prismlauncher = final.callPackage ./nix/wrapper.nix { };
+          pineconemc = final.callPackage ./nix/wrapper.nix { };
         };
 
       packages = forAllSystems (
@@ -211,12 +211,12 @@
           pkgs = nixpkgsFor.${system};
 
           # Build a scope from our overlay
-          prismPackages = lib.makeScope pkgs.newScope (final: self.overlays.default final pkgs);
+          launcherPackages = lib.makeScope pkgs.newScope (final: self.overlays.default final pkgs);
 
           # Grab our packages from it and set the default
           packages = {
-            inherit (prismPackages) prismlauncher-unwrapped prismlauncher;
-            default = prismPackages.prismlauncher;
+            inherit (launcherPackages) pineconemc-unwrapped pineconemc;
+            default = launcherPackages.pineconemc;
           };
         in
 
@@ -234,11 +234,11 @@
         in
 
         {
-          prismlauncher-debug = packages'.prismlauncher.override {
-            prismlauncher-unwrapped = legacyPackages'.prismlauncher-unwrapped-debug;
+          pineconemc-debug = packages'.pineconemc.override {
+            pineconemc-unwrapped = legacyPackages'.pineconemc-unwrapped-debug;
           };
 
-          prismlauncher-unwrapped-debug = packages'.prismlauncher-unwrapped.overrideAttrs {
+          pineconemc-unwrapped-debug = packages'.pineconemc-unwrapped.overrideAttrs {
             cmakeBuildType = "Debug";
             dontStrip = true;
           };
