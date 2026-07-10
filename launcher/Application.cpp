@@ -753,7 +753,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_settings->registerSetting("LastHostname", "");
         m_settings->registerSetting("JvmArgs", "");
         m_settings->registerSetting("UseOptimizedJvmArgs", true);
-        const auto defaultGCPreset = m_settings->get("MaxMemAlloc").toInt() >= 4096 ? "ZGC" : "G1GC";
+        const auto defaultGCPreset = m_settings->get("MaxMemAlloc").toInt() >= 4096 ? "ZGC" : "Shenandoah";
         m_settings->registerSetting("GarbageCollectorPreset", defaultGCPreset);
         m_settings->registerSetting("IgnoreJavaCompatibility", false);
         m_settings->registerSetting("IgnoreJavaWizard", false);
@@ -763,7 +763,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         m_settings->registerSetting("UserAskedAboutAutomaticJavaDownload", false);
 
         // Legacy settings
-        m_settings->registerSetting("OnlineFixes", false);
+        m_settings->registerSetting("OnlineFixes", true);
 
         // Ely settings
         m_settings->registerSetting("ElyPatchPreference", 1);
@@ -883,6 +883,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
             // Legacy FML libs URL
             resetIfInvalid(m_settings->registerSetting("LegacyFMLLibsURLOverride", "").get());
         }
+
+        m_settings->registerSetting("PineconeAutoServers", true);
 
         m_settings->registerSetting("MetaRefreshOnLaunch", true);
         m_settings->registerSetting("CloseAfterLaunch", false);

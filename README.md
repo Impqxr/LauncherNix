@@ -3,6 +3,10 @@
 Original README:
 
 ---
+> [!CAUTION]
+> **There's now malicious links in the wild that disguise themselves as this project.**
+>
+> Make sure that you download PineconeMC from `elyprismlauncher.github.io` and/or `pineconemc.ru`.
 
 <p align="center">
 <picture>
