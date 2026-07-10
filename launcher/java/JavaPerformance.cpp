@@ -102,7 +102,9 @@ QStringList JavaPerformance::getGarbageCollectorArgs(const JavaVersion& version,
     return {};
 }
 
-QStringList JavaPerformance::getCompletePerformanceArgs(const JavaVersion& version, const bool useOptimized, GarbageCollectorPreset preset,
+QStringList JavaPerformance::getCompletePerformanceArgs(const JavaVersion& version,
+                                                        const bool useOptimized,
+                                                        GarbageCollectorPreset preset,
                                                         QString* warning)
 {
     GarbageCollectorPreset maximumSupported;

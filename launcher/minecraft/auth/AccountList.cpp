@@ -661,8 +661,8 @@ void AccountList::tryNext()
                 found = true;
                 if (!account->shouldRefresh()) {
                     // Account no longer needs refreshing, skip it.
-                    qDebug() << "RefreshSchedule: Skipping account" << account->profileName() << "with internal ID"
-                             << accountId << "(no longer needs refresh)";
+                    qDebug() << "RefreshSchedule: Skipping account" << account->profileName() << "with internal ID" << accountId
+                             << "(no longer needs refresh)";
                     break;
                 }
                 m_currentTask = account->refresh();

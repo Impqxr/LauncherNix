@@ -108,7 +108,6 @@ void NetRequest::executeTask()
     auto user_agent = BuildConfig.USER_AGENT;
 #endif
 
-
     for (auto& header_proxy : m_headerProxies) {
         header_proxy->writeHeaders(request);
     }
